@@ -44,13 +44,22 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState([]) // meu estado receberá um array
 
+  const aoNovoColaborador = (colaborador) => {
+    console.log(colaborador)
+    setColaboradores([...colaboradores, colaborador])
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => setColaboradores(...colaboradores, colaborador)}/>{/*passando paro o meu set que vou receber os antigos colaboradores e os novos  */}
-      {times.map(time => <Time nome={time.nome} key={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSegundaria}/>)}
+      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaborador(colaborador)}/>{/*passando paro o meu set que vou receber os antigos colaboradores e os novos  */}
+      {times.map(time => <Time 
+      nome={time.nome} 
+      key={time.nome} 
+      corPrimaria={time.corPrimaria} 
+      corSecundaria={time.corSegundaria} 
+      colaboradores={colaboradores}/>)}
     </div>
-    
   );
 }
 
