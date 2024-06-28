@@ -45,7 +45,6 @@ function App() {
   const [colaboradores, setColaboradores] = useState([]) // meu estado receberá um array
 
   const aoNovoColaborador = (colaborador) => {
-    console.log(colaborador)
     setColaboradores([...colaboradores, colaborador])
   }
 
